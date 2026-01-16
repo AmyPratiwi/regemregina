@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regem Regina - Brand Ambassador of Foreign Language</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Config for Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'royal-gold': '#D4AF37',
+                        'royal-dark': '#0f0f0f',
+                        'royal-gray': '#2a2a2a',
+                        'royal-light': '#F9F9F9',
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Lato"', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 1s ease-out',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles & Utilities */
+        body {
+            font-family: 'Lato', sans-serif;
+            color: #1A1A1A;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .text-gold-gradient {
+            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Video Background Overlay */
+        .video-overlay {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+        }
+
+        /* Animation Classes */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+            will-change: opacity, visibility;
+        }
+        
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* Hover Card Effect */
+        .team-card:hover .team-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .activity-card {
+            transition: all 0.4s ease;
+        }
+        .activity-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Background Utilities */
+        .bg-fixed-image {
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+        }
+        /* Overlay agar tulisan terbaca */
+        .bg-overlay-light {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(255, 255, 255, 0.90); /* Putih transparan 90% */
+            z-index: 0;
+        }
+        .bg-overlay-dark {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(15, 15, 15, 0.90); /* Hitam transparan 90% */
+            z-index: 0;
+        }
+
+        /* Modal Scrollbar */
+        .modal-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        .modal-content::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        .modal-content::-webkit-scrollbar-thumb {
+            background: #D4AF37; 
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="text-royal-dark">
+
+    <!-- Navbar (Transparent & Floating) -->
+    <nav class="fixed w-full z-50 transition-all duration-300 p-6 flex justify-between items-center" id="navbar">
+        <div class="flex items-center gap-3">
+            <!-- LOGO IMAGE (GANTI SRC DENGAN LOGO ANDA) -->
+            <!-- Placeholder Logo menggunakan UI Avatars -->
+            <img src="logorr.png" alt="Regem Regina Logo" class="w-10 h-10 object-contain rounded-full border border-white/20">
+            
+            <div class="text-white text-xl font-serif font-bold tracking-widest uppercase">Regem Regina</div>
+        </div>
+        <div class="hidden md:flex space-x-8 text-white text-xs tracking-[0.2em] uppercase font-bold">
+            <a href="#about" class="hover:text-royal-gold transition duration-300 relative group">About</a>
+            <a href="#team" class="hover:text-royal-gold transition duration-300 relative group">Team</a>
+            <a href="#activity" class="hover:text-royal-gold transition duration-300 relative group">Activity</a>
+            <a href="#contact" class="hover:text-royal-gold transition duration-300 relative group">Contact</a>
+        </div>
+    </nav>
+
+    <!-- SECTION 1: HERO (Video Background) -->
+    <header class="relative w-full h-screen flex items-center justify-center overflow-hidden">
+        <!-- VIDEO BACKGROUND -->
+        <video autoplay muted loop playsinline class="absolute w-auto min-w-full min-h-full max-w-none object-cover">
+            <!-- Ganti src video di sini -->
+            <source src="vid.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+        <div class="absolute inset-0 video-overlay z-10"></div>
+        
+        <div class="relative z-20 text-center px-4 animate-fade-in-up max-w-5xl mx-auto">
+            <h1 class="text-6xl md:text-9xl text-white font-bold mb-2 tracking-wide drop-shadow-2xl">
+                REGEM <span class="text-gold-gradient">REGINA</span>
+            </h1>
+            <p class="text-royal-gold uppercase tracking-[0.2em] md:tracking-[0.4em] text-sm md:text-xl font-bold mb-8 border-y border-white/20 py-4 inline-block">
+                Brand Ambassador of Foreign Language
+            </p>
+            <p class="text-gray-200 text-lg md:text-2xl font-serif italic tracking-wider opacity-90">
+                "Brain, Beauty, Behavior"
+            </p>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 animate-bounce cursor-pointer" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">
+            <div class="border border-white/30 rounded-full p-2">
+                <i data-lucide="arrow-down" class="text-white w-5 h-5"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- SECTION 2: WHAT IS REGEM REGINA -->
+    <section id="about" class="py-24 px-6 md:px-20 bg-fixed-image fade-in-section" style="background-image: url('senyum.jpg');">
+        <div class="bg-overlay-light"></div>
+        
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <h2 class="text-4xl md:text-5xl text-royal-dark mb-12">About Us</h2>
+            <div class="w-16 h-1 bg-royal-gold mx-auto mb-10"></div>
+            
+            <p class="text-lg md:text-xl text-gray-600 leading-relaxed font-light mb-16">
+                <strong class="text-royal-gold">Regem Regina Bahasa Asing </strong>terinspirasi dari makna raja dan ratu bukan sebagai simbol kemenangan semata, melainkan sebagai perwujudan tanggung jawab, peran, dan proses bertumbuh. Regem Regina hadir sebagai ruang pengembangan dan ekspresi mahasiswa jurusan bahasa asing melalui organisasi, gagasan, serta kontribusi nyata. Bahasa asing menjadi identitas yang menghidupkan komunikasi lintas budaya dan semangat kepemimpinan yang berintegritas.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Brain -->
+                <div class="group p-8 bg-white/50 backdrop-blur-sm border border-white/60 hover:border-royal-gold hover:bg-white transition-all duration-500 rounded-xl cursor-default shadow-sm hover:shadow-xl">
+                    <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-md group-hover:bg-royal-gold transition">
+                        <i data-lucide="brain-circuit" class="w-7 h-7 text-royal-dark"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 font-serif">Brain</h3>
+                    <p class="text-sm opacity-80 leading-relaxed">Kecerdasan intelektual dan kemampuan berpikir kritis dalam menghadapi tantangan global.</p>
+                </div>
+                <!-- Beauty -->
+                <div class="group p-8 bg-white/50 backdrop-blur-sm border border-white/60 hover:border-royal-gold hover:bg-white transition-all duration-500 rounded-xl cursor-default shadow-sm hover:shadow-xl">
+                    <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-md group-hover:bg-royal-gold transition">
+                        <i data-lucide="sparkles" class="w-7 h-7 text-royal-dark"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 font-serif">Beauty</h3>
+                    <p class="text-sm opacity-80 leading-relaxed">Pesona yang terpancar dari kepercayaan diri (inner beauty) dan penampilan yang elegan.</p>
+                </div>
+                <!-- Behavior -->
+                <div class="group p-8 bg-white/50 backdrop-blur-sm border border-white/60 hover:border-royal-gold hover:bg-white transition-all duration-500 rounded-xl cursor-default shadow-sm hover:shadow-xl">
+                    <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-md group-hover:bg-royal-gold transition">
+                        <i data-lucide="heart" class="w-7 h-7 text-royal-dark"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 font-serif">Behavior</h3>
+                    <p class="text-sm opacity-80 leading-relaxed">Etika yang luhur, sopan santun, dan sikap kepemimpinan yang menjadi teladan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: ORGANISASI (Semua Foto Besar & Berpasangan) -->
+    <section id="team" class="py-24 px-6 bg-fixed-image fade-in-section" style="background-image: url('https://images.unsplash.com/photo-1507643179173-442f8c5c2438?q=80&w=2000&auto=format&fit=crop');">
+        <div class="bg-overlay-light"></div>
+
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="text-center mb-20">
+                <span class="text-royal-gold text-sm font-bold tracking-[0.3em] uppercase block mb-2">Our Organization</span>
+                <h2 class="text-4xl md:text-5xl text-royal-dark">Regem Regina 2025</h2>
+            </div>
+
+            <!-- CONTAINER UTAMA -->
+            <div class="space-y-24">
+                
+                <!-- 1. KETUA & WAKIL -->
+                <div>
+                    <h3 class="text-center font-serif text-2xl text-royal-gold mb-10 italic relative inline-block w-full">
+                        <span class="bg-white/50 px-4 py-1 rounded">Leaders</span>
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 justify-items-center">
+                        
+                        <!-- Card Ketua -->
+                        <div class="team-card group relative w-full md:w-80 h-[450px] bg-white rounded-lg shadow-xl overflow-hidden cursor-pointer">
+                            <img src="tristan.jpg" alt="Ketua" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 filter grayscale group-hover:grayscale-0">
+                            <div class="team-overlay absolute inset-0 bg-gradient-to-t from-royal-dark/90 via-royal-dark/40 to-transparent opacity-0 transition-all duration-500 flex flex-col justify-end p-6 translate-y-4">
+                                <h3 class="text-2xl text-white font-serif">Caesar Tristan</h3>
+                                <p class="text-royal-gold text-xs font-bold tracking-widest uppercase mb-2">Ketua</p>
+                            </div>
+                            <div class="absolute bottom-0 left-0 w-full p-4 bg-white/90 backdrop-blur-sm group-hover:opacity-0 transition duration-300 border-t border-gray-100">
+                                <h3 class="text-lg font-serif text-center">Ketua</h3>
+                            </div>
+                        </div>
+
+                        <!-- Card Wakil -->
+                        <div class="team-card group relative w-full md:w-80 h-[450px] bg-white rounded-lg shadow-xl overflow-hidden cursor-pointer">
+                            <img src="asti.jpg" alt="Wakil" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 filter grayscale group-hover:grayscale-0">
+                            <div class="team-overlay absolute inset-0 bg-gradient-to-t from-royal-dark/90 via-royal-dark/40 to-transparent opacity-0 transition-all duration-500 flex flex-col justify-end p-6 translate-y-4">
+                                <h3 class="text-2xl text-white font-serif">Asti Nari</h3>
+                                <p class="text-royal-gold text-xs font-bold tracking-widest uppercase mb-2">Wakil Ketua</p>
+                            </div>
+                            <div class="absolute bottom-0 left-0 w-full p-4 bg-white/90 backdrop-blur-sm group-hover:opacity-0 transition duration-300 border-t border-gray-100">
+                                <h3 class="text-lg font-serif text-center">Wakil Ketua</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. SEKRETARIS -->
+                <div>
+                    <h3 class="text-center font-serif text-2xl text-royal-gold mb-10 italic relative inline-block w-full">
+                         <span class="bg-white/50 px-4 py-1 rounded">Sekretaris</span>
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 justify-items-center">
+                        
+                        <!-- Sekretaris 1 -->
+                        <div class="team-card group relative w-full md:w-80 h-[450px] bg-white rounded-lg shadow-xl overflow-hidden cursor-pointer">
+                            <img src="amy.jpeg" alt="Sekretaris 1" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 filter grayscale group-hover:grayscale-0">
+                            <div class="team-overlay absolute inset-0 bg-gradient-to-t from-royal-dark/90 via-royal-dark/40 to-transparent opacity-0 transition-all duration-500 flex flex-col justify-end p-6 translate-y-4">
+                                <h3 class="text-2xl text-white font-serif">Amy Pratiwi</h3>
+                                <p class="text-royal-gold text-xs font-bold tracking-widest uppercase mb-2">Sekretaris 1</p>
+                            </div>
+                            <div class="absolute bottom-0 left-0 w-full p-4 bg-white/90 backdrop-blur-sm group-hover:opacity-0 transition duration-300 border-t border-gray-100">
+                                <h3 class="text-lg font-serif text-center">Sekretaris 1</h3>
+                            </div>
+                        </div>
+
+                        <!-- Sekretaris 2 -->
+                        <div class="team-card group relative w-full md:w-80 h-[450px] bg-white rounded-lg shadow-xl overflow-hidden cursor-pointer">
+                            <img src="Rey.jpg" alt="Sekretaris 2" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 filter grayscale group-hover:grayscale-0">
+                            <div class="team-overlay absolute inset-0 bg-gradient-to-t from-royal-dark/90 via-royal-dark/40 to-transparent opacity-0 transition-all duration-500 flex flex-col justify-end p-6 translate-y-4">
+                                <h3 class="text-2xl text-white font-serif">Rey Ivander</h3>
+                                <p class="text-royal-gold text-xs font-bold tracking-widest uppercase mb-2">Sekretaris 2</p>
+                            </div>
+                            <div class="absolute bottom-0 left-0 w-full p-4 bg-white/90 backdrop-blur-sm group-hover:opacity-0 transition duration-300 border-t border-gray-100">
+                                <h3 class="text-lg font-serif text-center">Sekretaris 2</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. BENDAHARA -->
+                <div>
+                    <h3 class="text-center font-serif text-2xl text-royal-gold mb-10 italic relative inline-block w-full">
+                        <span class="bg-white/50 px-4 py-1 rounded">Bendahara</span>
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 justify-items-center">
+                        
+                        <!-- Bendahara 1 -->
+                        <div class="team-card group relative w-full md:w-80 h-[450px] bg-white rounded-lg shadow-xl overflow-hidden cursor-pointer">
+                            <img src="erli.jpg" alt="Bendahara 1" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 filter grayscale group-hover:grayscale-0">
+                            <div class="team-overlay absolute inset-0 bg-gradient-to-t from-royal-dark/90 via-royal-dark/40 to-transparent opacity-0 transition-all duration-500 flex flex-col justify-end p-6 translate-y-4">
+                                <h3 class="text-2xl text-white font-serif">Erli Andini</h3>
+                                <p class="text-royal-gold text-xs font-bold tracking-widest uppercase mb-2">Bendahara 1</p>
+                            </div>
+                            <div class="absolute bottom-0 left-0 w-full p-4 bg-white/90 backdrop-blur-sm group-hover:opacity-0 transition duration-300 border-t border-gray-100">
+                                <h3 class="text-lg font-serif text-center">Bendahara 1</h3>
+                            </div>
+                        </div>
+
+                        <!-- Bendahara 2 -->
+                        <div class="team-card group relative w-full md:w-80 h-[450px] bg-white rounded-lg shadow-xl overflow-hidden cursor-pointer">
+                            <img src="linda.jpg" alt="Bendahara 2" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 filter grayscale group-hover:grayscale-0">
+                            <div class="team-overlay absolute inset-0 bg-gradient-to-t from-royal-dark/90 via-royal-dark/40 to-transparent opacity-0 transition-all duration-500 flex flex-col justify-end p-6 translate-y-4">
+                                <h3 class="text-2xl text-white font-serif">Lilis Lindayani</h3>
+                                <p class="text-royal-gold text-xs font-bold tracking-widest uppercase mb-2">Bendahara 2</p>
+                            </div>
+                            <div class="absolute bottom-0 left-0 w-full p-4 bg-white/90 backdrop-blur-sm group-hover:opacity-0 transition duration-300 border-t border-gray-100">
+                                <h3 class="text-lg font-serif text-center">Bendahara 2</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. HUMAS -->
+                <div>
+                    <h3 class="text-center font-serif text-2xl text-royal-gold mb-10 italic relative inline-block w-full">
+                        <span class="bg-white/50 px-4 py-1 rounded">Hubungan Masyarakat</span>
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 justify-items-center">
+                        
+                        <!-- Humas 1 -->
+                        <div class="team-card group relative w-full md:w-80 h-[450px] bg-white rounded-lg shadow-xl overflow-hidden cursor-pointer">
+                            <img src="metta.jpg" alt="Humas 1" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 filter grayscale group-hover:grayscale-0">
+                            <div class="team-overlay absolute inset-0 bg-gradient-to-t from-royal-dark/90 via-royal-dark/40 to-transparent opacity-0 transition-all duration-500 flex flex-col justify-end p-6 translate-y-4">
+                                <h3 class="text-2xl text-white font-serif">Metta Setiarini</h3>
+                                <p class="text-royal-gold text-xs font-bold tracking-widest uppercase mb-2">Humas 1</p>
+                            </div>
+                            <div class="absolute bottom-0 left-0 w-full p-4 bg-white/90 backdrop-blur-sm group-hover:opacity-0 transition duration-300 border-t border-gray-100">
+                                <h3 class="text-lg font-serif text-center">Humas 1</h3>
+                            </div>
+                        </div>
+
+                        <!-- Humas 2 -->
+                        <div class="team-card group relative w-full md:w-80 h-[450px] bg-white rounded-lg shadow-xl overflow-hidden cursor-pointer">
+                            <img src="alex.jpg" alt="Humas 2" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 filter grayscale group-hover:grayscale-0">
+                            <div class="team-overlay absolute inset-0 bg-gradient-to-t from-royal-dark/90 via-royal-dark/40 to-transparent opacity-0 transition-all duration-500 flex flex-col justify-end p-6 translate-y-4">
+                                <h3 class="text-2xl text-white font-serif">Alexius Rudolf</h3>
+                                <p class="text-royal-gold text-xs font-bold tracking-widest uppercase mb-2">Humas 2</p>
+                            </div>
+                            <div class="absolute bottom-0 left-0 w-full p-4 bg-white/90 backdrop-blur-sm group-hover:opacity-0 transition duration-300 border-t border-gray-100">
+                                <h3 class="text-lg font-serif text-center">Humas 2</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. DOKUMENTASI -->
+                <div>
+                    <h3 class="text-center font-serif text-2xl text-royal-gold mb-10 italic relative inline-block w-full">
+                        <span class="bg-white/50 px-4 py-1 rounded">Publikasi & Dokumentasi</span>
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 justify-items-center">
+                        
+                        <!-- Dok 1 -->
+                        <div class="team-card group relative w-full md:w-80 h-[450px] bg-white rounded-lg shadow-xl overflow-hidden cursor-pointer">
+                            <img src="giri.jpg" alt="Dokumentasi 1" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 filter grayscale group-hover:grayscale-0">
+                            <div class="team-overlay absolute inset-0 bg-gradient-to-t from-royal-dark/90 via-royal-dark/40 to-transparent opacity-0 transition-all duration-500 flex flex-col justify-end p-6 translate-y-4">
+                                <h3 class="text-2xl text-white font-serif">Mahaputra Giri</h3>
+                                <p class="text-royal-gold text-xs font-bold tracking-widest uppercase mb-2">Publikasi & Dokumentasi 1</p>
+                            </div>
+                            <div class="absolute bottom-0 left-0 w-full p-4 bg-white/90 backdrop-blur-sm group-hover:opacity-0 transition duration-300 border-t border-gray-100">
+                                <h3 class="text-lg font-serif text-center">Publikasi & Dokumentasi 1</h3>
+                            </div>
+                        </div>
+
+                        <!-- Dok 2 -->
+                        <div class="team-card group relative w-full md:w-80 h-[450px] bg-white rounded-lg shadow-xl overflow-hidden cursor-pointer">
+                            <img src="adi.jpg" alt="Dokumentasi 2" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 filter grayscale group-hover:grayscale-0">
+                            <div class="team-overlay absolute inset-0 bg-gradient-to-t from-royal-dark/90 via-royal-dark/40 to-transparent opacity-0 transition-all duration-500 flex flex-col justify-end p-6 translate-y-4">
+                                <h3 class="text-2xl text-white font-serif">Adi Wiguna</h3>
+                                <p class="text-royal-gold text-xs font-bold tracking-widest uppercase mb-2">Publikasi & Dokumentasi 2</p>
+                            </div>
+                            <div class="absolute bottom-0 left-0 w-full p-4 bg-white/90 backdrop-blur-sm group-hover:opacity-0 transition duration-300 border-t border-gray-100">
+                                <h3 class="text-lg font-serif text-center">Publikasi & Dokumentasi 2</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: ACTIVITY (Image BG + Dark Overlay) -->
+    <section id="activity" class="py-24 px-6 bg-fixed-image fade-in-section relative" 
+        style="background-image: url('foto.jpg');">
+        
+        <div class="bg-overlay-dark"></div> <!-- Overlay hitam transparan -->
+        
+        <div class="max-w-6xl mx-auto relative z-10 text-white">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 border-b border-gray-700 pb-8">
+                <div>
+                    <span class="uppercase tracking-widest text-royal-gold text-sm font-bold mb-2 block">Our Gallery</span>
+                    <h2 class="text-4xl md:text-5xl font-serif">Recent Activities</h2>
+                </div>
+                <div class="mt-4 md:mt-0 max-w-sm text-gray-400 text-sm md:text-right">
+                    Kegiatan kami berfokus pada pengembangan karakter, sosial, dan kebudayaan.
+                </div>
+            </div>
+
+            <!-- ACTIVITY GRID CONTAINER -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- ACTIVITY CARD 1 -->
+                <div class="activity-card group bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-royal-gold/50 cursor-pointer backdrop-blur-sm">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="heartcover.JPG" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100">
+                        <div class="absolute top-4 right-4 bg-royal-gold text-royal-dark text-xs font-bold px-3 py-1 rounded-full uppercase">
+                            Social
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-serif text-white mb-2 group-hover:text-royal-gold transition">HEART</h3>
+                        <p class="text-xs text-gray-400 uppercase tracking-wider mb-4">Help Everyone And Raise Togetherness</p>
+                        <p class="text-gray-300 font-light text-sm line-clamp-3">
+                            HEART adalah program bakti sosial berkelanjutan yang menyalurkan pasokan kebutuhan pokok langsung ke berbagai wilayah.
+                        <div class="mt-6 pt-4 border-t border-white/10 flex justify-between items-center text-sm">
+                            <span class="text-gray-500">Regem Regina 2025</span>
+                            <button 
+                                onclick="openModal('HEART Project', 'Kegiatan bantuan sosial ini dilaksanakan pada 20 Desember 2025 di Desa Tigawasa, Kecamatan Banjar, Kabupaten Buleleng. Program perdana kami ini secara khusus menyasar para lansia berkebutuhan khusus di wilayah tersebut untuk memberikan bantuan dukungan dasar. Dalam pelaksanaannya, kami bekerja sama dengan Ben Heart Foundation serta didukung penuh oleh relawan dari HMJ Bahasa Asing Undiksha. Kegiatan ini mencakup penyaluran bantuan pokok bagi mereka yang membutuhkan.', 'heartcover.jpg')"
+                                class="flex items-center gap-1 text-royal-gold hover:text-white transition cursor-pointer bg-transparent border-none">
+                                Read More <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bagian Seminar telah dihapus di sini -->
+
+            </div>
+        </div>
+    </section>
+    <!-- === AKHIR BAGIAN ACTIVITY === -->
+
+    <!-- SECTION 5: FOOTER & REGISTER (Image BG + Light Overlay) -->
+    <section id="contact" class="pt-20 pb-10 border-t border-gray-100 bg-fixed-image fade-in-section" style="background-image: url('gf.jpeg');">
+        <div class="bg-overlay-light"></div>
+
+        <div class="max-w-4xl mx-auto text-center px-6 relative z-10">
+            <!-- LOGO DI FOOTER JUGA -->
+            <img src="logorr.png" alt="Regem Regina Logo" class="w-16 h-16 mx-auto mb-6 object-contain rounded-full border border-gray-200">
+            
+            <h2 class="text-4xl font-serif text-royal-dark mb-4">Bergabunglah Bersama Kami</h2>
+            <p class="text-gray-500 mb-10 max-w-lg mx-auto">Jadilah bagian dari generasi emas yang cerdas, berkarakter, dan berbudaya.</p>
+            
+            <a href="https://forms.gle/fxsaNred28ShjjTS9" target="_blank" class="inline-flex items-center gap-3 bg-royal-dark text-white px-10 py-4 rounded-full text-sm font-bold tracking-widest hover:bg-royal-gold hover:text-white transition-all duration-300 shadow-xl transform hover:-translate-y-1">
+                <span>COMING SOON</span>
+                <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </a>
+
+            <div class="mt-16 flex justify-center space-x-8">
+                <a href="https://instagram.com/regemreginafl" target="_blank" class="group flex flex-col items-center gap-2">
+                    <div class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center group-hover:bg-pink-600 group-hover:text-white transition duration-300 shadow-sm">
+                        <i data-lucide="instagram" class="w-6 h-6"></i>
+                    </div>
+                    <span class="text-xs text-gray-400 group-hover:text-pink-600 transition">Instagram</span>
+                </a>
+            </div>
+            
+            <div class="mt-12 text-xs text-gray-400 border-t border-gray-200 pt-8 font-sans">
+                &copy; 2025 Regem Regina Organization. All Rights Reserved. <br>
+                <span class="opacity-50">Brain, Beauty, Behavior.</span>
+            </div>
+        </div>
+    </section>
+
+       <!-- REVISED MODAL POPUP FOR ACTIVITY LIST -->
+    <div id="activityModal" class="fixed inset-0 z-[100] hidden">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity opacity-0" id="modalBackdrop" onclick="closeModal()"></div>
+        
+        <!-- Modal Content Container -->
+        <div class="relative z-10 bg-white w-full max-w-5xl mx-auto mt-10 md:mt-10 rounded-xl overflow-hidden shadow-2xl transform scale-95 opacity-0 transition-all duration-300 h-[90vh] flex flex-col" id="modalContent">
+            
+            <!-- Header Fixed Top -->
+            <div class="flex justify-between items-center p-4 bg-white border-b border-gray-100 shadow-sm z-30 sticky top-0">
+                <div class="flex items-center gap-3">
+                    <div class="w-1 h-8 bg-royal-gold"></div>
+                    <div>
+                        <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block">Detailed View</span>
+                        <h3 id="modalHeaderTitle" class="text-xl text-royal-dark font-serif font-bold leading-none">Activity Details</h3>
+                    </div>
+                </div>
+                <button onclick="closeModal()" class="bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-full p-2 transition">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Scrollable Body (List of Activities) -->
+            <div class="flex-1 overflow-y-auto bg-gray-50 custom-scrollbar" id="modalBody">
+                
+                <!-- Main Hero Image (Header of the content) -->
+                <div class="relative w-full h-64 md:h-80 shrink-0 group overflow-hidden">
+                    <img id="modalMainImage" src="" class="w-full h-full object-cover transition duration-1000 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 md:left-10 text-white">
+                        <span class="bg-royal-gold text-royal-dark text-xs font-bold px-3 py-1 rounded mb-3 inline-block shadow-lg">Featured Activity</span>
+                        <h2 id="modalMainTitle" class="text-3xl md:text-5xl font-serif font-bold drop-shadow-lg">Title Here</h2>
+                    </div>
+                </div>
+
+                <!-- LIST CONTAINER: This is where "several activities" will go -->
+                <div id="modalActivitiesList" class="p-6 md:p-10 max-w-4xl mx-auto space-y-12">
+                    
+                    <!-- Items will be injected here by Javascript -->
+                    <!-- Currently only displaying one item as requested -->
+
+                </div>
+
+                <!-- Footer of Modal Content -->
+                <div class="p-10 text-center border-t border-gray-200 bg-white">
+                    <p class="text-gray-400 text-sm italic">More activities coming soon...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        const navTitle = document.getElementById('nav-title');
+        const navLinks = document.getElementById('nav-links');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-royal-dark/95', 'backdrop-blur-md', 'shadow-lg', 'py-3');
+                navbar.classList.remove('p-6');
+            } else {
+                navbar.classList.remove('bg-royal-dark/95', 'backdrop-blur-md', 'shadow-lg', 'py-3');
+                navbar.classList.add('p-6');
+            }
+        });
+
+        // Fade In Animation on Scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // REVISED MODAL LOGIC
+        const modal = document.getElementById('activityModal');
+        const modalBackdrop = document.getElementById('modalBackdrop');
+        const modalContent = document.getElementById('modalContent');
+        
+        // Header Elements
+        const modalHeaderTitle = document.getElementById('modalHeaderTitle');
+        const modalMainTitle = document.getElementById('modalMainTitle');
+        const modalMainImage = document.getElementById('modalMainImage');
+        
+        // The container for the list
+        const modalActivitiesList = document.getElementById('modalActivitiesList');
+
+        // Function to toggle gallery visibility
+        window.toggleGallery = function(btn) {
+            // Mencari elemen parent terdekat lalu mencari div gallery di dalamnya
+            const contentWrapper = btn.closest('.content-wrapper');
+            const gallery = contentWrapper.querySelector('.gallery-grid');
+            
+            if (gallery.classList.contains('hidden')) {
+                gallery.classList.remove('hidden');
+                gallery.classList.add('grid');
+                btn.innerHTML = 'Hide Gallery <i data-lucide="chevron-up" class="w-3 h-3 ml-1 inline"></i>';
+                btn.classList.add('bg-royal-gold', 'text-white');
+                btn.classList.remove('bg-royal-light', 'text-royal-dark');
+            } else {
+                gallery.classList.add('hidden');
+                gallery.classList.remove('grid');
+                btn.innerHTML = 'View Gallery <i data-lucide="chevron-down" class="w-3 h-3 ml-1 inline"></i>';
+                btn.classList.remove('bg-royal-gold', 'text-white');
+                btn.classList.add('bg-royal-light', 'text-royal-dark');
+            }
+            lucide.createIcons(); // Refresh icons for the new chevron
+        }
+
+        function openModal(title, desc, imageSrc) {
+            // 1. Set Main Header Data
+            modalHeaderTitle.textContent = title;
+            modalMainTitle.textContent = title;
+            modalMainImage.src = imageSrc;
+            
+            // 2. Clear previous list
+            modalActivitiesList.innerHTML = '';
+
+            // 3. Create the "One" item requested (You can loop here later for multiple items)
+            // HTML Structure for a single activity item in the list
+            const activityItemHTML = `
+                <div class="flex flex-col md:flex-row gap-8 items-start relative animate-fade-in-up">
+                    <!-- Date/Timeline Marker (Optional decoration) -->
+                    <div class="hidden md:flex flex-col items-center mt-2 mr-4">
+                        <div class="w-4 h-4 rounded-full bg-royal-gold ring-4 ring-white shadow-md z-10"></div>
+                        <div class="w-0.5 h-full bg-gray-200 absolute top-4 left-[9px] -z-0"></div>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="w-full">
+                        <div class="bg-white p-6 md:p-8 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition duration-300">
+                            <div class="flex flex-col md:flex-row gap-6">
+                                <!-- Thumbnail Image for this specific item -->
+                                <div class="w-full md:w-1/3 aspect-[4/3] rounded-lg overflow-hidden shrink-0 cursor-pointer">
+                                    <img src="${imageSrc}" class="w-full h-full object-cover hover:scale-110 transition duration-700">
+                                </div>
+                                
+                                <!-- Description & Gallery Wrapper -->
+                                <div class="w-full md:w-2/3 content-wrapper">
+                                    <div class="flex items-center gap-2 mb-3">
+                                        <i data-lucide="calendar" class="w-4 h-4 text-royal-gold"></i>
+                                        <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">20 December 2025</span>
+                                    </div>
+                                    <h4 class="text-2xl font-bold text-royal-dark mb-4 font-serif">HEART #1</h4>
+                                    <p class="text-gray-600 leading-relaxed font-light text-justify">
+                                        ${desc}
+                                    </p>
+                                    
+                                    <!-- Action Buttons inside item -->
+                                    <div class="mt-6 flex gap-3">
+                                        <button onclick="toggleGallery(this)" class="px-4 py-2 bg-royal-light text-royal-dark text-xs font-bold uppercase tracking-wider rounded hover:bg-royal-gold hover:text-white transition flex items-center gap-1">
+                                            View Gallery <i data-lucide="chevron-down" class="w-3 h-3"></i>
+                                        </button>
+                                        <button class="p-2 border border-gray-200 rounded text-gray-400 hover:text-red-500 hover:border-red-200 transition">
+                                            <i data-lucide="heart" class="w-4 h-4"></i>
+                                        </button>
+                                    </div>
+
+                                    <!-- Hidden Gallery Grid -->
+                                    <div class="gallery-grid hidden mt-6 grid-cols-2 md:grid-cols-3 gap-3 animate-fade-in-up border-t border-gray-100 pt-6">
+                                        <img src="heart1.jpg" class="rounded-lg h-24 w-full object-cover cursor-pointer hover:opacity-80 transition hover:scale-105 transform duration-300" onclick="window.open(this.src, '_blank')">
+                                        <img src="heart2 copy.jpg" class="rounded-lg h-24 w-full object-cover cursor-pointer hover:opacity-80 transition hover:scale-105 transform duration-300" onclick="window.open(this.src, '_blank')">
+                                        <img src="heart3.jpg" class="rounded-lg h-24 w-full object-cover cursor-pointer hover:opacity-80 transition hover:scale-105 transform duration-300" onclick="window.open(this.src, '_blank')">
+                                        <img src="heart4.jpg" class="rounded-lg h-24 w-full object-cover cursor-pointer hover:opacity-80 transition hover:scale-105 transform duration-300" onclick="window.open(this.src, '_blank')">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Inject the item
+            modalActivitiesList.innerHTML = activityItemHTML;
+
+            // Re-initialize icons for the new injected HTML
+            lucide.createIcons();
+            
+            // Show Modal
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modalBackdrop.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-95', 'opacity-0');
+            }, 10);
+            
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modalBackdrop.classList.add('opacity-0');
+            modalContent.classList.add('scale-95', 'opacity-0');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }, 300);
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
